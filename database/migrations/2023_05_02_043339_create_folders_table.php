@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('folders', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedBigInteger('folder_id');
-            $table->foreign('folder_id')->references('id')->on('folders');
-            $table->string('title',50);
-            $table->integer('status');
-            $table->date('due_date');
+            $table->string('title', 20);
             $table->timestamps();
         });
     }
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists('folders');
     }
 };
